@@ -1,0 +1,30 @@
+<h1> To-Do List</h1>
+
+<form id="ourForm">
+  <input id="field" type="text" autocomplete="off">
+  <button>Create item</button>
+</form>
+
+<h3>Need To Do</h3>
+<ul id="list">   
+</ul>
+<script>
+let form = document.getElementById("ourForm")
+let f = document.getElementById("field")
+let l = document.getElementById("list")
+form.addEventListener("submit",(e) => {
+  e.preventDefault()
+  createItem(f.value)
+})
+
+function createItem(x){
+  let HTML = `<li>
+    ${x} <button onclick="deleteItem(this)">Delete</button> </li>`
+  l.insertAdjacentHTML("beforeend",HTML)
+  f.value=""
+  f.focus()
+}
+function deleteItem(x){
+  x.parentElement.remove()
+}
+</script>
